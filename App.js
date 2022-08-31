@@ -12,6 +12,7 @@ export default function App() {
     const todasChaves = await AsyncStorage.getAllKeys()
     const todasNotas = await AsyncStorage.multiGet(todasChaves)
     setNotas(todasNotas)
+    console.log(todasNotas)
   }
   return (
     <SafeAreaView style={estilos.container}>
@@ -19,7 +20,7 @@ export default function App() {
       data={notas}
       renderItem={(nota) => <Nota {...nota}/>}
       keyExtractor={nota => nota[0]}/>
-      <NotaEditor mostraNotas={mostraNotas()}/>
+      <NotaEditor mostraNotas={mostraNotas}/>
       <StatusBar/>
     </SafeAreaView>
   )
