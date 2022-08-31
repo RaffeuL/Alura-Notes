@@ -13,7 +13,6 @@ export default function NotaEditor({mostranotas}) {
       id: novoId.toString(),
       texto: texto,
     }
-    console.log(umaNota)
     await AsyncStorage.setItem(umaNota.id, umaNota.texto)
     setTexto('')
     mostranotas()
