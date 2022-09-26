@@ -24,7 +24,7 @@ export default function App() {
       data={notas}
       renderItem={(nota) => <Nota {...nota} setNotaSelecionada={setNotaSelecionada}/>}
       keyExtractor={nota => nota.id}/>
-      <NotaEditor mostraNotas={mostraNotas} notaSelecionada={notaSelecionada}/>
+      <NotaEditor mostraNotas={mostraNotas} notaSelecionada={notaSelecionada} setNotaSelecionada={setNotaSelecionada}/>
       <StatusBar/>
     </SafeAreaView>
   )
