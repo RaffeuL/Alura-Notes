@@ -2,7 +2,7 @@ import { SafeAreaView, StatusBar, StyleSheet, FlatList } from "react-native"
 import { useEffect, useState } from "react"
 import NotaEditor from "./src/componentes/NotaEditor"
 import { Nota } from './src/componentes/Nota'
-import { criaTabela } from "./src/servicos/Notas"
+import { buscaNotas, criaTabela } from "./src/servicos/Notas"
 
 export default function App() {
   const [notas, setNotas] = useState([])
@@ -12,7 +12,7 @@ export default function App() {
   }, [])
 
   async function mostraNotas(){
-    
+    const todasNotas = await buscaNotas()
     setNotas(todasNotas)
   }
   return (
@@ -20,7 +20,7 @@ export default function App() {
       <FlatList
       data={notas}
       renderItem={(nota) => <Nota {...nota}/>}
-      keyExtractor={nota => nota[0]}/>
+      keyExtractor={nota => nota.id}/>
       <NotaEditor mostraNotas={mostraNotas}/>
       <StatusBar/>
     </SafeAreaView>
