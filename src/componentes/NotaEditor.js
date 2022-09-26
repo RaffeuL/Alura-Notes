@@ -80,7 +80,7 @@ export default function NotaEditor({mostraNotas, notaSelecionada, setNotaSelecio
                 <View style={estilos.modalPicker}> 
                 <Text style={estilos.modalSubTitulo}>Categoria</Text>
                 <Picker
-                  selectedPicker={categoria}
+                  selectedValue={categoria}
                   onValueChange={novaCategoria => setCategoria(novaCategoria)}>
                     <Picker.Item label="Pessoal" value="Pessoal" />
                     <Picker.Item label="Trabalho" value="Trabalho" />
