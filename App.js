@@ -1,18 +1,19 @@
 import { SafeAreaView, StatusBar, StyleSheet, FlatList } from "react-native"
-import { useState } from "react"
-import AsyncStorage from "@react-native-async-storage/async-storage"
-
+import { useEffect, useState } from "react"
 import NotaEditor from "./src/componentes/NotaEditor"
 import { Nota } from './src/componentes/Nota'
+import { criaTabela } from "./src/servicos/Notas"
 
 export default function App() {
   const [notas, setNotas] = useState([])
 
+  useEffect(() => {
+    criaTabela()
+  }, [])
+
   async function mostraNotas(){
-    const todasChaves = await AsyncStorage.getAllKeys()
-    const todasNotas = await AsyncStorage.multiGet(todasChaves)
+    
     setNotas(todasNotas)
-    console.log(todasNotas)
   }
   return (
     <SafeAreaView style={estilos.container}>
